@@ -1,5 +1,5 @@
 import { useCart } from '../context/CartContext';
-import { Card, Button, Col } from 'react-bootstrap';
+import { Card, Button, Col, Badge } from 'react-bootstrap';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -18,11 +18,18 @@ const ProductCard = ({ product }) => {
           <Card.Text className="text-muted">{product.author}</Card.Text>
           <div className="mt-auto">
             <Card.Text className="h5 text-success mb-3">
-              ${product.price.toFixed(2)}
-              {product.originalPrice && (
-                <small className="text-muted text-decoration-line-through ms-2">
-                  ${product.originalPrice.toFixed(2)}
-                </small>
+              {product.originalPrice ? (
+                <>
+                  ${product.price.toFixed(2)}
+                  <small className="text-muted text-decoration-line-through ms-2">
+                    ${product.originalPrice.toFixed(2)}
+                  </small>
+                  <Badge bg="danger" className="ms-2">
+                    -{product.discount}%
+                  </Badge>
+                </>
+              ) : (
+                `$${product.price.toFixed(2)}`
               )}
             </Card.Text>
             <Button
