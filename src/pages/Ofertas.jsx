@@ -29,7 +29,7 @@ const Ofertas = () => {
             : 'https://via.placeholder.com/200x300?text=Sin+Imagen',
           price: precioDescuento,
           originalPrice: precioOriginal,
-          discount: 30
+          discount: 50
         };
       });
 
