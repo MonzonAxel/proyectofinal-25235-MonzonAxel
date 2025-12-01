@@ -1,16 +1,55 @@
-# React + Vite
+# 📚 Proyecto: Librería en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web desarrollada en **React** que simula una tienda de libros, donde se pueden visualizar, administrar y gestionar productos mediante un sistema **CRUD** conectado a **MockAPI**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades principales
 
-## React Compiler
+- ✅ Visualización de libros en la página principal  
+- ✅ Sección de **Ofertas** con libros destacados  
+- ✅ Panel de **Administración** con CRUD completo  
+- ✅ Crear, editar y eliminar libros  
+- ✅ Gestión de imágenes externas de libros  
+- ✅ Simulación de autenticación mediante **token**  
+- ✅ Protección de rutas privadas  
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔹 **React JS**
+- 🔹 **React Router DOM** (navegación entre páginas)
+- 🔹 **Context API** (manejo global de estado y autenticación)
+- 🔹 **React Bootstrap** (estilos y componentes visuales)
+- 🔹 **MockAPI** (base de datos simulada)
+- 🔹 **Fetch API** (consumo de datos)
+
+---
+
+## 🔑 Autenticación
+
+El proyecto usa una **simulación de token** utilizando **Context API**.
+
+### Credenciales de prueba
+
+- **Usuario:** `admin`
+- **Contraseña:** `La404`
+
+Una vez iniciada la sesión se habilita el CRUD completo.
+
+---
+
+## 📷 Imágenes
+
+Las imágenes de los libros se obtienen desde: [text](https://loremflickr.com)
+
+## 📁 Instalación
+
+1. Clonar el repositorio
+
+2. Instalar dependencias
+
+```bash
+npm install
+npm run dev
