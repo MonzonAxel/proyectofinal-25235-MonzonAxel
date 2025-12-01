@@ -20,16 +20,16 @@ const ProductCard = ({ product }) => {
             <Card.Text className="h5 text-success mb-3">
               {product.originalPrice ? (
                 <>
-                  ${product.price.toFixed(2)}
+                  ${product.price}
                   <small className="text-muted text-decoration-line-through ms-2">
-                    ${product.originalPrice.toFixed(2)}
+                    ${product.originalPrice}
                   </small>
                   <Badge bg="danger" className="ms-2">
                     -{product.discount}%
                   </Badge>
                 </>
               ) : (
-                `$${product.price.toFixed(2)}`
+                `$${product.price}`
               )}
             </Card.Text>
             <Button
