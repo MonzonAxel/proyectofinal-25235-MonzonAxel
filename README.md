@@ -6,24 +6,24 @@ Este proyecto es una aplicación web desarrollada en **React** que simula una ti
 
 ## 🚀 Funcionalidades principales
 
-- ✅ Visualización de libros en la página principal  
-- ✅ Sección de **Ofertas** con libros destacados  
-- ✅ Panel de **Administración** con CRUD completo  
-- ✅ Crear, editar y eliminar libros  
-- ✅ Gestión de imágenes externas de libros  
-- ✅ Simulación de autenticación mediante **token**  
-- ✅ Protección de rutas privadas  
+✅ Visualización de libros en la página principal  
+✅ Sección de **Ofertas** con libros destacados  
+✅ Panel de **Administración** con CRUD completo  
+✅ Crear, editar y eliminar libros  
+✅ Gestión de imágenes externas de libros  
+✅ Simulación de autenticación mediante **token**  
+✅ Protección de rutas privadas  
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-- 🔹 **React JS**
-- 🔹 **React Router DOM** (navegación entre páginas)
-- 🔹 **Context API** (manejo global de estado y autenticación)
-- 🔹 **React Bootstrap** (estilos y componentes visuales)
-- 🔹 **MockAPI** (base de datos simulada)
-- 🔹 **Fetch API** (consumo de datos)
+- **React JS**
+- **React Router DOM** (navegación entre páginas)
+- **Context API** (manejo global de estado y autenticación)
+- **React Bootstrap** (estilos y componentes visuales)
+- **MockAPI** (base de datos simulada)
+- **Fetch API** (consumo de datos)
 
 ---
 
@@ -51,5 +51,7 @@ Las imágenes de los libros se obtienen desde: [text](https://loremflickr.com)
 2. Instalar dependencias
 
 ```bash
+git clone https://github.com/MonzonAxel/proyectofinal-25235-MonzonAxel.git
+git code .
 npm install
 npm run dev
