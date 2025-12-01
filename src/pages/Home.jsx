@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
-import { Container, Row, Spinner, Alert } from 'react-bootstrap';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -13,20 +13,23 @@ const Home = () => {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://openlibrary.org/subjects/fantasy.json?limit=25');
+
+      const response = await fetch(
+        'https://692cdd51e5f67cd80a495f17.mockapi.io/proyectoFinal/book'
+      );
+
       const data = await response.json();
 
-      const formattedProducts = data.works.map((book, index) => ({
-        id: book.key,
+      const formattedProducts = data.map((book) => ({
+        id: book.id,
         title: book.title,
-        author: book.authors?.[0]?.name || 'Autor desconocido',
-        image: book.cover_id
-          ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
-          : 'https://via.placeholder.com/200x300?text=Sin+Imagen',
-        price: Math.floor(Math.random() * (50 - 10 + 1)) + 10
+        author: book.author,
+        image: book.image,
+        price: book.price
       }));
 
       setProducts(formattedProducts);
+
     } catch (error) {
       console.error('Error fetching books:', error);
     } finally {
@@ -38,10 +41,8 @@ const Home = () => {
     return (
       <Container className="py-5">
         <div className="text-center">
-          <Spinner animation="border" variant="primary" role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </Spinner>
-          <p className="mt-3">Cargando libros de fantasía...</p>
+          <Spinner animation="border" />
+          <p className="mt-3">Cargando libros...</p>
         </div>
       </Container>
     );
@@ -49,14 +50,26 @@ const Home = () => {
 
   return (
     <Container className="py-4">
-      <h1 className="mb-4">Libros de Fantasía</h1>
-      <p className="text-muted mb-4">Sumergite en nuestros libros más deseados de fantasía</p>
 
-      <Row className="row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </Row>
+      <h1 className="mb-4">Libros</h1>
+      <p className="text-muted mb-4">
+        Explora nuestra colección de {products.length} libros
+      </p>
+
+      {products.length === 0 ? (
+        <Alert variant="info">
+          No hay productos disponibles. Ve a Administración para agregar libros.
+        </Alert>
+      ) : (
+        <Row xs={1} md={3} lg={4} className="g-4">
+          {products.map((product) => (
+            <Col key={product.id}>
+              <ProductCard product={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
+
     </Container>
   );
 };

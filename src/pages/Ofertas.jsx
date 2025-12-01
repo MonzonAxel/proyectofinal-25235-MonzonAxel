@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
-import { Container, Row, Spinner, Alert } from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
+import ProductCard from "../components/ProductCard";
 
 const Ofertas = () => {
-  const [productos, setProductos] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,29 +13,33 @@ const Ofertas = () => {
   const fetchOffersBooks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://openlibrary.org/subjects/fantasy.json?limit=5');
+
+      const response = await fetch(
+        "https://692cdd51e5f67cd80a495f17.mockapi.io/proyectoFinal/book"
+      );
+
       const data = await response.json();
 
-      const productosFormateados = data.works.map((book, index) => {
-        const precioOriginal = Math.floor(Math.random() * (50 - 20 + 1)) + 20;
-        const precioDescuento = Math.floor(precioOriginal * 0.5);
+      const formattedProducts = data
+        .filter((book) => book.offer === true)
+        .map((book) => {
+          const originalPrice = book.price;
+          const discountPrice = Math.floor(originalPrice * 0.7);
 
-        return {
-          id: book.key,
-          title: book.title,
-          author: book.authors?.[0]?.name || 'Autor desconocido',
-          image: book.cover_id
-            ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
-            : 'https://via.placeholder.com/200x300?text=Sin+Imagen',
-          price: precioDescuento,
-          originalPrice: precioOriginal,
-          discount: 50
-        };
-      });
+          return {
+            id: book.id,
+            title: book.title,
+            author: book.author,
+            image: book.image,
+            price: discountPrice,
+            originalPrice: originalPrice,
+            discount: 30,
+          };
+        });
 
-      setProductos(productosFormateados);
+      setProducts(formattedProducts);
     } catch (error) {
-      console.error('Error fetching books:', error);
+      console.error("Error fetching books:", error);
     } finally {
       setLoading(false);
     }
@@ -45,9 +49,7 @@ const Ofertas = () => {
     return (
       <Container className="py-5">
         <div className="text-center">
-          <Spinner animation="border" variant="danger" role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </Spinner>
+          <Spinner animation="border" variant="danger" />
           <p className="mt-3">Cargando ofertas especiales...</p>
         </div>
       </Container>
@@ -56,18 +58,25 @@ const Ofertas = () => {
 
   return (
     <Container className="py-4">
-      <Alert variant="danger" role="alert">
-        <Alert.Heading>Ofertas Increibles - 50% OFF</Alert.Heading>
-        <p className="mb-0">¡Aprovecha estas ofertas fantasticas!</p>
-      </Alert>
-
       <h1 className="mb-4">Ofertas del Día</h1>
 
-      <Row className="row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-        {productos.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </Row>
+      {products.length === 0 ? (
+        <Alert variant="info">No hay ofertas disponibles</Alert>
+      ) : (
+        <>
+          <Alert variant="danger">
+            <Alert.Heading>Ofertas Especiales - 30% OFF</Alert.Heading>
+            ¡Aprovecha estas increíbles ofertas por tiempo limitado!
+          </Alert>
+          <Row xs={1} md={3} lg={5} className="g-4">
+            {products.map((product) => (
+              <Col key={product.id}>
+                <ProductCard product={product} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      )}
     </Container>
   );
 };
