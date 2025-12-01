@@ -42,7 +42,7 @@ const Carrito = () => {
                     <p className="text-muted mb-0">{item.author}</p>
                   </Col>
                   <Col md={2}>
-                    <p className="mb-0 fw-bold">${item.price.toFixed(2)}</p>
+                    <p className="mb-0 fw-bold">${item.price}</p>
                   </Col>
                   <Col md={2}>
                     <InputGroup size="sm">
@@ -94,7 +94,7 @@ const Carrito = () => {
             <Card.Body>
               <div className="d-flex justify-content-between mb-2">
                 <span>Subtotal:</span>
-                <span>${getCartTotal().toFixed(2)}</span>
+                <span>${getCartTotal()}</span>
               </div>
               <div className="d-flex justify-content-between mb-2">
                 <span>Envío:</span>
@@ -103,7 +103,7 @@ const Carrito = () => {
               <hr />
               <div className="d-flex justify-content-between mb-3">
                 <strong>Total:</strong>
-                <strong className="text-primary">${getCartTotal().toFixed(2)}</strong>
+                <strong className="text-primary">${getCartTotal()}</strong>
               </div>
               <Button variant="success" className="w-100 mb-2">
                 Proceder al Pago
