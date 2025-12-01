@@ -1,9 +1,13 @@
 import { useCart } from '../context/CartContext';
-import { Container, Row, Col, Card, Button, InputGroup, Form, Badge } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, InputGroup, Form, Badge, Modal, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Carrito = () => {
   const { cart, removeFromCart, updateQuantity, clearCart, getCartTotal } = useCart();
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [purchaseComplete, setPurchaseComplete] = useState(false);
 
   if (cart.length === 0) {
     return (
@@ -18,6 +22,23 @@ const Carrito = () => {
       </Container>
     );
   }
+
+  const handleCheckout = async () => {
+    setShowCheckout(true);
+    setIsProcessing(true);
+
+    // Simulacion de pago para flashearla 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    setIsProcessing(false);
+    setPurchaseComplete(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowCheckout(false);
+    setPurchaseComplete(false);
+    clearCart();
+  };
 
   return (
     <Container className="py-4">
@@ -105,7 +126,7 @@ const Carrito = () => {
                 <strong>Total:</strong>
                 <strong className="text-primary">${getCartTotal()}</strong>
               </div>
-              <Button variant="success" className="w-100 mb-2">
+              <Button variant="success" className="w-100 mb-2" onClick={handleCheckout}>
                 Proceder al Pago
               </Button>
               <Button as={Link} to="/" variant="outline-secondary" className="w-100">
@@ -115,6 +136,29 @@ const Carrito = () => {
           </Card>
         </Col>
       </Row>
+
+      <Modal show={showCheckout} onHide={handleCloseModal} centered backdrop="static" keyboard={false}>
+        <Modal.Body className="text-center py-5">
+          {isProcessing ? (
+            <>
+              <Spinner animation="border" variant="primary" className="mb-3" />
+              <h5>Procesando tu compra...</h5>
+              <p className="text-muted">Por favor espera mientras procesamos tu pago</p>
+            </>
+          ) : purchaseComplete ? (
+            <>
+              <div className="mb-3 text-success" style={{ fontSize: '3rem' }}>
+                ✓
+              </div>
+              <h5>¡Compra Exitosa!</h5>
+              <p className="text-muted">Tu compra ha sido procesada correctamente. Te enviaremos un correo de confirmación pronto.</p>
+              <Button variant="success" onClick={handleCloseModal} className="w-100">
+                Continuar
+              </Button>
+            </>
+          ) : null}
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };
