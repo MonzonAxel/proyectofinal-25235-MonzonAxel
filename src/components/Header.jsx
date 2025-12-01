@@ -26,8 +26,8 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Button 
-            // as={Link} 
-            // to="/carrito" 
+            as={Link} 
+            to="/carrito" 
             variant="outline-light" 
             className="position-relative"
           >
