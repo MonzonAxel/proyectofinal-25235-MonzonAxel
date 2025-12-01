@@ -42,7 +42,7 @@ Una vez iniciada la sesión se habilita el CRUD completo.
 
 ## 📷 Imágenes
 
-Las imágenes de los libros se obtienen desde: [text](https://loremflickr.com)
+Las imágenes de los libros se obtienen desde: [Lorem Flickr](https://loremflickr.com)
 
 ## 📁 Instalación
 
