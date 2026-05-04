@@ -1,10 +1,10 @@
-# 📚 Proyecto: Librería en React
+# Proyecto: Librería en React
 
 Este proyecto es una aplicación web desarrollada en **React** que simula una tienda de libros, donde se pueden visualizar, administrar y gestionar productos mediante un sistema **CRUD** conectado a **MockAPI**.
 
 ---
 
-## 🚀 Funcionalidades principales
+## Funcionalidades principales
 
 ✅ Visualización de libros en la página principal  
 ✅ Sección de **Ofertas** con libros destacados  
@@ -16,7 +16,7 @@ Este proyecto es una aplicación web desarrollada en **React** que simula una ti
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - **React JS**
 - **React Router DOM** (navegación entre páginas)
@@ -27,7 +27,7 @@ Este proyecto es una aplicación web desarrollada en **React** que simula una ti
 
 ---
 
-## 🔑 Autenticación
+## Autenticación
 
 El proyecto usa una **simulación de token** utilizando **Context API**.
 
@@ -40,11 +40,11 @@ Una vez iniciada la sesión se habilita el CRUD completo.
 
 ---
 
-## 📷 Imágenes
+## Imágenes
 
 Las imágenes de los libros se obtienen desde: [Lorem Flickr](https://loremflickr.com)
 
-## 📁 Instalación
+## Instalación
 
 1. Clonar el repositorio
 
